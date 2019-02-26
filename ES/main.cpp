@@ -1,7 +1,5 @@
 #include "startwindow.h"
 #include <QApplication>
-#include "Simulation.h"
-#include "Actor.h"
 #include <random>
 #include <iostream>
 
