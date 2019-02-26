@@ -1,5 +1,4 @@
 #include "Population.h"
-#include <iostream>
 #include "Syllabary.h"
 #include "Actor.h"
 
@@ -37,7 +36,6 @@ void Actor::setID(string id) {
 }
 
 void Actor::rewardUpdate() {
-    cout << "Actor Reward Update" << endl;
 	Reward = 0;
 }
 
@@ -72,4 +70,8 @@ QString Actor::toString() {
 
 QString Actor::toStringComprehensive() {
     return QString::fromStdString(ID);
+}
+
+QString Actor::toStringPopulation() {
+    return "Generic Creature";
 }

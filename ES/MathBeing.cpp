@@ -1,5 +1,4 @@
 #include <math.h>
-#include <iostream>
 #include "FunctionLibrary.h"
 #include "MathBeing.h"
 
@@ -11,16 +10,12 @@ MathBeing::MathBeing() {}
 MathBeing::MathBeing(string id, float mutRate) {
     MutationRate = mutRate;
     ID = id;
-    cout << "Math1 Creature Created: ";
-    cout << getID() << endl;
     Body = MathBeingBody();
 }
 
 MathBeing2::MathBeing2(string id, float mutRate) {
     MutationRate = mutRate;
     ID = id;
-    cout << "Math2 Creature Created: ";
-    cout << getID() << endl;
     Body = MathBeingBody();
 }
 
@@ -58,19 +53,27 @@ QString MathBeing::toString() {
     QString str = "Name: ";
     str += QString::fromStdString(ID);
     str += "\nScore: ";
-    str += QString::number(Reward);
+    str += (Reward != 2147483647 ? QString::number(Reward): "Perfect Score!!!");
     return str;
 }
 
 QString MathBeing::toStringComprehensive() {
     QString str = "Name: " + QString::fromStdString(ID);
     rewardUpdate();
-    str += "\nScore: " + QString::number(Reward);
+    str += "\nScore: " + (Reward != 2147483647 ? QString::number(Reward): "Perfect Score!!!");
     str += "\nBody: [v = 1] [c = " + QString::number(Body.constant0) + "] ";
-    for (int i = 0; i < Body.Length; i += 1) {
-        str += Body.BodyPart(i) + ((i % 4) == 0 ? "\n" : "");
+    for (int i = 0; i < MAX_CALCS && Body.operations[i]; i += 1) {
+        str += Body.BodyPart(i) + ((i % 6) == 0 ? "\n" : "");
     }
     return str;
+}
+
+QString MathBeing::toStringPopulation() {
+    return "";
+}
+
+QString MathBeing2::toStringPopulation() {
+    return "";
 }
 
 QString MathBeingBody::BodyPart(unsigned int i) {
@@ -132,9 +135,7 @@ void MathBeing::rewardUpdate() {
 }
 
 void MathBeing::printActor() {
-    cout << getID() << ":" << endl;
-    Body.printBody();
-    cout << "Reward: " << getReward() << "\n" << endl;
+
 }
 
 MathBeing::~MathBeing() {}
@@ -162,7 +163,6 @@ void MathBeingBody::reset0() {
 int MathBeingBody::Run() {
 	InitialValue = 1;
     for (int i = 0; i < MAX_CALCS && operations[i]; i += 1) {
-        //cout << "Function: " << i << " Operation: " << operations[i] << " Value: " << InitialValue << endl;
         InitialValue = calc(InitialValue, operations[i]);
         Length = i;
 	}
@@ -206,9 +206,5 @@ int MathBeingBody::calc(int value, int operation) {
 }
 
 void MathBeingBody::printBody() {
-    cout << "Body: " << "const = " << constant0 << " | FunctionList: ";
-    for (unsigned int i = 0; i < MAX_CALCS && operations[i]; i += 1) {
-        cout << operations[i] << " ";
-	}
-    cout << endl;
+
 }

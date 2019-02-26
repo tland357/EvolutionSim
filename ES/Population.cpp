@@ -1,6 +1,5 @@
 #include <math.h>
 #include "Syllabary.h"
-#include <iostream>
 #include <vector>
 #include "MathBeing.h"
 #include "functionlibrary.h"
@@ -42,7 +41,6 @@ Population::Population(SimType type, float mutRate, float forgive, int rewardMul
     case MATH3:
         break;
     }
-    cout << "Population Filled" << endl;
 }
 
 
@@ -198,7 +196,6 @@ string Population::genName() {
 
 void Population::Run() {
     for (unsigned int i = 0; i < Capacity; i += 1) {
-        cout << "Run Creature: " << i + 1 << endl;
         ActorList[i]->rewardUpdate();
 	}
 }

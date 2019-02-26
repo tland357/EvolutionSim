@@ -1,7 +1,6 @@
 #include "startwindow.h"
 #include <QApplication>
 #include <random>
-#include <iostream>
 
 using namespace std;
 

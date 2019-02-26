@@ -8,7 +8,7 @@ enum RadioType {
     Math1,
     Math2
 };
-const int MAX_POP_CAPACITY = 1000;
+const int MAX_POP_CAPACITY = 10000;
 const int MIN_POP_CAPACITY = 10;
 
 namespace Ui {
@@ -48,8 +48,17 @@ private slots:
 
     void on_CreatureObserveInput_textEdited(const QString &arg1);
 
+    void on_BestCreatureInfo_clicked();
+
+    void on_MedianCreatureInfo_clicked();
+
+    void on_WorstCreatureInfo_clicked();
+
+    void on_MultiGen_BT_clicked();
+
 private:
     void Reset();
+    void RunGen();
     SimType Type;
     class Simulation Sim;
     Ui::StartWindow *ui;

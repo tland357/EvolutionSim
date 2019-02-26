@@ -1,7 +1,6 @@
 #include "Actor.h"
 #include "MathBeing.h"
 #include <random>
-#include <iostream>
 #include "Population.h"
 #include "Actor.h"
 #include "MathPopulation.h"

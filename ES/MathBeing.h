@@ -33,6 +33,7 @@ public:
     virtual ~MathBeing() override;
 	virtual void rewardUpdate() override;
     virtual QString toString() override;
+    virtual QString toStringPopulation() override;
 	virtual void printActor() override;
     virtual void Mutate() override;
     virtual QString toStringComprehensive() override;
@@ -45,4 +46,5 @@ public:
     MathBeing2(string id, Actor* M);
     virtual ~MathBeing2() override;
     virtual void rewardUpdate() override;
+    virtual QString toStringPopulation() override;
 };

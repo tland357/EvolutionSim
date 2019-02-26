@@ -28,6 +28,7 @@ public:
 	virtual void printActor();
     virtual QString toString();
     virtual QString toStringComprehensive();
+    virtual QString toStringPopulation();
     virtual void Mutate();
 
 	//returns true if second argument is larger than the first
