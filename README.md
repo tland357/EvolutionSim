@@ -16,18 +16,18 @@ The third type of creature is called a Sudoku Creature. This creature is a rando
 generated sudoku board; however, this board may not follow the restrictions of sudoku
 from the start. Sudoku creatures are made up of rows, columns, and 3x3 subregions on a
 grid, and each of these areas of the board must contain all numbers from 1 to 9. If a
-row, column, or sub-region contains all 9 numerals, then the creatures score goes up by
-1. Be sure to play around with the evolution settings to find which scenarios work best 
+row, column, or sub-region contains all 9 numerals, then the creatures score goes up by 1. 
+Be sure to play around with the evolution settings to find which scenarios work best 
 for each creature!
 
 HOW TO USE:
-Step 1. Open the releases tab and download the most recent verified release.
+1. Open the releases tab and download the most recent verified release.
 
-Step 2. Open the executable file ES.exe
+2. Open the executable file ES.exe
 
-Step 3. Select a creature type. This is seen in radio button group at the top left of the window.
+3. Select a creature type. This is seen in radio button group at the top left of the window.
 
-Step 4. Input settings
+4. Input settings
     Mutation Rate: The probability that a certain mutation will occur when a creature is reproduced
         bounded between 0 and 1.
     Forgiveness: The degree to which poor performances are punished. At a value of 1, good performing
@@ -38,10 +38,10 @@ Step 4. Input settings
     Seed: A Number which generates all random evolution events. Two simulations with the same seed will
       start with the same population.
       
-Step 5. Generate a population. You can either generate a single one, or type a value for how many
+5. Generate a population. You can either generate a single one, or type a value for how many
     generations to skip through.
     
-Step 6. Observe results. The Best, Worst, and Median performers are recorded and displayed. Clicking
+6. Observe results. The Best, Worst, and Median performers are recorded and displayed. Clicking
     on any of these three will display it's details in depth. To display the results of any specific 
     creature during a certain generation, either type a value in the creature observer box between 0 
     and the Capacity you've entered minus 1, or drag the sliding vertical bar up and down. Note that 
@@ -50,7 +50,7 @@ Step 6. Observe results. The Best, Worst, and Median performers are recorded and
     any increase in performance will result in a drastic decrease in their overall score due to the 
     way computers process integers.
     
-Step 7. Continue the simulation or change the settings. Any alteration to a setting (other than the
+7. Continue the simulation or change the settings. Any alteration to a setting (other than the
     value for running multiple generations) will result in the simulation starting over. A given
     simulation with the same settings and seed value will always result in the same simulation so you
     can go back and observe a simulation again.
