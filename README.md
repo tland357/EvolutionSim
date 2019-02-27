@@ -27,7 +27,8 @@ HOW TO USE:
 
 3. Select a creature type. This is seen in radio button group at the top left of the window.
 
-4. Input settings
+4. Change the input settings:
+
     Mutation Rate: The probability that a certain mutation will occur when a creature is reproduced
         bounded between 0 and 1.
     Forgiveness: The degree to which poor performances are punished. At a value of 1, good performing
