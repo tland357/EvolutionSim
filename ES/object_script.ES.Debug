@@ -1,0 +1,12 @@
+debug/main.o
+debug/startwindow.o
+debug/Actor.o
+debug/MathBeing.o
+debug/MathPopulation.o
+debug/Population.o
+debug/Simulation.o
+debug/populationwindow.o
+debug/tictactoebeing.o
+debug/sudokubeing.o
+debug/moc_startwindow.o
+debug/moc_populationwindow.o

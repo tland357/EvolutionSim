@@ -19,8 +19,8 @@ public:
     void reset0();
     void printBody();
     MathBeingBody();
-    int calc(int value, int operation);
-    int Run();
+    double calc(double value, unsigned int operation);
+    double Run();
     QString BodyPart(unsigned int i);
 };
 
@@ -28,7 +28,7 @@ public:
 class MathBeing : public Actor {
 public:
     MathBeing();
-    MathBeing(string id, float mutRate);
+    MathBeing(string id, double mutRate);
     MathBeing(string id, Actor* M);
     virtual ~MathBeing() override;
 	virtual void rewardUpdate() override;
@@ -42,7 +42,7 @@ public:
 
 class MathBeing2 : public MathBeing {
 public:
-    MathBeing2(string id, float mutRate);
+    MathBeing2(string id, double mutRate);
     MathBeing2(string id, Actor* M);
     virtual ~MathBeing2() override;
     virtual void rewardUpdate() override;

@@ -32,7 +32,9 @@ SOURCES += \
         MathPopulation.cpp \
         Population.cpp \
         Simulation.cpp \
-    populationwindow.cpp
+    populationwindow.cpp \
+    tictactoebeing.cpp \
+    sudokubeing.cpp
 
 HEADERS += \
         startwindow.h \
@@ -44,7 +46,9 @@ HEADERS += \
         Syllabary.h \
         FunctionLibrary.h \
     simtype.h \
-    populationwindow.h
+    populationwindow.h \
+    tictactoebeing.h \
+    sudokubeing.h
 
 FORMS += \
         startwindow.ui \
@@ -54,3 +58,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    main.qml

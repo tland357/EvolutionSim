@@ -6,7 +6,7 @@
 
 using namespace std;
 const int MAX_CAPACITY = 1000;
-const float e = 2.718282f;
+const double e = 2.718282;
 
 
 class Population {
@@ -15,24 +15,24 @@ public:
     vector<Actor*> SurvivorList;
     Population();
     virtual ~Population();
-    Population(SimType type, float mutRate, float forgive, int rewardMult, unsigned int capacity);
+    Population(SimType type, double mutRate, double forgive, int rewardMult, unsigned int capacity);
     void sort();
-    virtual void kill(float forgiveness);
+    virtual void kill(double forgiveness);
     virtual void regen();
     static string genName();
     void Run();
-    float MutationRate;
-    float Forgiveness;
+    double MutationRate;
+    double Forgiveness;
     int RewardMultiplier;
     Actor* BestCreature;
     Actor* MedianCreature;
     Actor* WorstCreature;
 protected:
     void swap(unsigned int i, unsigned int j);
-    float sig(unsigned int index, float forgiveness);
-    void forgiveFunc(float& forgiveness);
+    double sig(unsigned int index, double forgiveness);
+    void forgiveFunc(double& forgiveness);
     std::knuth_b rand_engine;
-    void clamp01(float& value);
+    void clamp01(double& value);
     unsigned int Capacity;
     unsigned int survivorCounter;
     SimType Type;

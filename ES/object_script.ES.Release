@@ -1,0 +1,12 @@
+release/main.o
+release/startwindow.o
+release/Actor.o
+release/MathBeing.o
+release/MathPopulation.o
+release/Population.o
+release/Simulation.o
+release/populationwindow.o
+release/tictactoebeing.o
+release/sudokubeing.o
+release/moc_startwindow.o
+release/moc_populationwindow.o

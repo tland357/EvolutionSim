@@ -12,7 +12,7 @@ class Simulation {
 public:
     Simulation();
 	//factory system for building a simulation type
-    Simulation(SimType type, float mutRate, float forgive, int rewardMult, unsigned int Capacity);
+    Simulation(SimType type, double mutRate, double forgive, int rewardMult, unsigned int Capacity);
 	~Simulation();
     Population CurrentPopulation;
     //Population Math3Pop;
@@ -21,17 +21,17 @@ public:
     void BMWCreatures(Actor* Worst, Actor* Middle, Actor* Best);
 	void GenerationKill();
 	void GenerationRegen();
-	void setForgiveness(float value);
+    void setForgiveness(double value);
 	void setRewardMultiplier(int value);
-	void setMutationRate(float value);
+    void setMutationRate(double value);
 	SimType Type;
-	float getMutationRate();
+    double getMutationRate();
 private:
 	void Setup(SimType Type);
 	int GoodMultiplierSetting = 2;
 	int HistoryCount = 0;
-    float GenerationForgiveness = 0.5f;
-    float MutationRate = 0.05f;
+    double GenerationForgiveness = 0.5f;
+    double MutationRate = 0.05f;
     unsigned int Capacity;
 
 };

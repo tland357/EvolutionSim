@@ -14,7 +14,7 @@ Simulation::Simulation(){
 }
 
 
-Simulation::Simulation(SimType type, float mutRate, float forgive, int rewardMult, unsigned int capacity){
+Simulation::Simulation(SimType type, double mutRate, double forgive, int rewardMult, unsigned int capacity){
     MutationRate = mutRate;
     GenerationForgiveness = forgive;
     GoodMultiplierSetting = rewardMult;
@@ -45,7 +45,7 @@ void Simulation::GenerationRegen() {
 }
 
 
-void Simulation::setForgiveness(float value) {
+void Simulation::setForgiveness(double value) {
 	GenerationForgiveness = value;
 }
 
@@ -55,12 +55,12 @@ void Simulation::setRewardMultiplier(int value) {
 }
 
 
-void Simulation::setMutationRate(float value) {
+void Simulation::setMutationRate(double value) {
 	MutationRate = value;
 }
 
 
-float Simulation::getMutationRate() {
+double Simulation::getMutationRate() {
 	return MutationRate;
 }
 

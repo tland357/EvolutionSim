@@ -56,6 +56,8 @@ private slots:
 
     void on_MultiGen_BT_clicked();
 
+    void on_SimType3_clicked();
+
 private:
     void Reset();
     void RunGen();
@@ -63,8 +65,8 @@ private:
     class Simulation Sim;
     Ui::StartWindow *ui;
     int counter;
-    float MutationRate;
-    float Forgiveness;
+    double MutationRate;
+    double Forgiveness;
     int RewardMultiplier;
     unsigned int Capacity;
     long long int Seed;

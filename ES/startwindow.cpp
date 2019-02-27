@@ -79,6 +79,8 @@ void StartWindow::on_SimType1_clicked()
 {
     counter = 0;
     ui->EvolutionCounter->setNum(0);
+    Type = MATH1;
+    Reset();
     ui->label->setText("\
 Function Snakes are made up of one randomly\n\
 generated constant value, and a list of up\n\
@@ -87,14 +89,16 @@ score of 1, and iteratively passes its\n\
 value into its chain of functions to try\n\
 and achieve the highest score possible.\n\
 Key: [] -> starting value\n\
-     () -> function\n");
-    Reset();
+       () -> function\n");
 }
 
 void StartWindow::on_SimType2_clicked()
 {
     counter = 0;
-ui->label->setText("\
+    ui->EvolutionCounter->setNum(0);
+    Type = MATH2;
+    Reset();
+    ui->label->setText("\
 Function Snakes are made up of one randomly\n\
 generated constant value, and a list of up\n\
 to 20 functions. Every snake starts with a\n\
@@ -105,15 +109,32 @@ Additionally, efficiency based function\n\
 snakes want to achieve the highest score\n\
 with the least amount of functions\n\
 Key: [] -> starting value\n\
-     () -> function\n");
+       () -> function\n");
+}
+
+void StartWindow::on_SimType3_clicked()
+{
+    counter = 0;
     ui->EvolutionCounter->setNum(0);
+    Type = SUDOKU;
     Reset();
+    ui->label->setText("\
+Sudoku Creatures are made up of a sudoku board.\n\
+Their numbers all range from 1 to 9, however,\n\
+these numbers are random and might not make a\n\
+valid sudoku board. A sudoku creature's score\n\
+is the number of correct rows, columns, and\n\
+sub-regions on the board.");
 }
 
 void StartWindow::on_SeedInput_textChanged(const QString &arg1)
 {
     Seed = arg1.toInt();
     Reset();
+    ui->label->setText("\
+The seed is a input value for generating random\n\
+values in the simulation. Two simulations with\n\
+the same seed will result in the same population.");
 }
 
 void StartWindow::Reset() {
@@ -137,23 +158,31 @@ void StartWindow::Reset() {
 
 void StartWindow::on_MutationInput_textChanged(const QString &arg1)
 {
-    MutationRate = arg1.toFloat();
+    MutationRate = arg1.toDouble();
     Reset();
+    ui->label->setText("\
+Mutation is a measure of how likely it is for\n\
+a creature to reproduce with an altered feature.\n\
+(values range from 0 to 1)");
 }
 
 void StartWindow::on_ForgivenessInput_textChanged(const QString &arg1)
 {
-    Forgiveness = arg1.toFloat();
+    Forgiveness = arg1.toDouble();
     Reset();
     ui->label->setText("\
 Forgiveness is a measure of how forgiving natural\n\
 selection is for creatures who perform poorly\n\
-during the simulation");
+during the simulation (values range from 0 to 1)");
 }
 
 void StartWindow::on_CapacityInput_textChanged(const QString &arg1)
 {
-
+    ui->label->setText("\
+Capacity is the number of creatures in a population.\n\
+Values range from 10 to 9,999. The first creature in\n\
+a population is labeled as creature 0, so the creature\n\
+identifiers range from 0  to (Capacity - 1)");
 }
 
 void StartWindow::rangeChecks() {
@@ -169,22 +198,22 @@ void StartWindow::rangeChecks() {
         ui->verticalSlider->setRange(0, MAX_POP_CAPACITY);
         flag = true;
     }
-    if (MutationRate > 1.0f) {
+    if (MutationRate > 1.0) {
         ui->MutationInput->setText("1");
-        MutationRate = 1.0f;
+        MutationRate = 1.0;
         flag = true;
-    } else if (MutationRate < 0.0f) {
+    } else if (MutationRate < 0.0) {
         ui->MutationInput->setText("0");
-        MutationRate = 0.0f;
+        MutationRate = 0.0;
         flag = true;
     }
-    if (Forgiveness > 1.0f) {
+    if (Forgiveness > 1.0) {
         ui->ForgivenessInput->setText("1");
-        Forgiveness = 1.0f;
+        Forgiveness = 1.0;
         flag = true;
-    } else if (Forgiveness < 0.0f) {
+    } else if (Forgiveness < 0.0) {
         ui->ForgivenessInput->setText("0");
-        Forgiveness = 0.0f;
+        Forgiveness = 0.0;
         flag = true;
     }
     if (flag)
@@ -269,3 +298,5 @@ void StartWindow::on_MultiGen_BT_clicked()
         RunGen();
     }
 }
+
+

@@ -12,22 +12,23 @@ string Actor::getID() {
 	return ID;
 }
 
-Actor::Actor(string id, float mutRate) {
+Actor::Actor(string id, double mutRate) {
     MutationRate = mutRate;
 	ID = id;
 }
 
 Actor::Actor(string id, Actor* a) {
-	ID = id;
+    ID = a->getID();
+    id += "";
 }
 
 Actor::~Actor() {}
 
-float Actor::getReward() {
+double Actor::getReward() {
 	return Reward;
 }
 
-void Actor::setReward(float reward) {
+void Actor::setReward(double reward) {
 	Reward = reward;
 }
 

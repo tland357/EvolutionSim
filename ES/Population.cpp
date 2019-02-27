@@ -2,6 +2,7 @@
 #include "Syllabary.h"
 #include <vector>
 #include "MathBeing.h"
+#include "sudokubeing.h"
 #include "functionlibrary.h"
 #include "Population.h"
 
@@ -11,10 +12,13 @@ using namespace std;
 Population::Population() {}
 
 
-Population::~Population() {}
+Population::~Population() {
+    ActorList.clear();
+    SurvivorList.clear();
+}
 
 
-Population::Population(SimType type, float mutRate, float forgive, int rewardMult, unsigned int capacity) {
+Population::Population(SimType type, double mutRate, double forgive, int rewardMult, unsigned int capacity) {
     MutationRate = mutRate;
     Capacity = capacity;
     Forgiveness = forgive;
@@ -39,6 +43,11 @@ Population::Population(SimType type, float mutRate, float forgive, int rewardMul
         }
         break;
     case MATH3:
+        break;
+    case SUDOKU:
+        for (unsigned int i = 0; i < Capacity; i += 1) {
+            ActorList.push_back(new Sudoku(genName(), MutationRate));
+        }
         break;
     }
 }
@@ -84,7 +93,7 @@ void Population::swap(unsigned int i, unsigned int j) {
 }
 
 
-void Population::kill(float forgiveness) {
+void Population::kill(double forgiveness) {
     survivorCounter = 0;
     SurvivorList.clear();
     switch (Type) {
@@ -114,21 +123,29 @@ void Population::kill(float forgiveness) {
         break;
     case MATH3:
         break;
+    case SUDOKU:
+        for (unsigned int i = Capacity; i > 0 && survivorCounter < (Capacity / 2); i -= 1) {
+            if (Functions::bernoulli(sig(i, forgiveness))) {
+                SurvivorList.push_back(new Sudoku(genName(), ActorList[i - 1]));
+                survivorCounter += 1;
+            }
+        }
+        break;
     }
 }
 
 
-float Population::sig(unsigned int index, float forgiveness) {
+double Population::sig(unsigned int index, double forgiveness) {
 	clamp01(forgiveness);
 	forgiveFunc(forgiveness);
-    float x = (index - (Capacity / 2) - 0.5f) / forgiveness;
-    float r = pow(e, x) / (1 + pow(e, x));
+    double x = (index - (Capacity / 2) - 0.5f) / forgiveness;
+    double r = pow(e, x) / (1 + pow(e, x));
     clamp01(r);
     return r;
 }
 
 
-void Population::clamp01(float& value) {
+void Population::clamp01(double& value) {
 	if (value > 1)
 		value = 1;
 	else if (value < 0) {
@@ -137,7 +154,7 @@ void Population::clamp01(float& value) {
 }
 
 
-void Population::forgiveFunc(float& forgiveness) {
+void Population::forgiveFunc(double& forgiveness) {
 	forgiveness = 1 - (99603 * forgiveness) + (199602 * forgiveness * forgiveness);
 }
 
@@ -176,6 +193,16 @@ void Population::regen() {
         }
         break;
     case MATH3:
+        break;
+    case SUDOKU:
+        for (unsigned int i = 0; i < Capacity; i += 1) {
+            if (i < SurvivorList.size()) {
+                ActorList.push_back(SurvivorList[i]);
+            }
+            else {
+                ActorList.push_back(new Sudoku(genName(), ActorList[i - SurvivorList.size()]));
+            }
+        }
         break;
     }
 }

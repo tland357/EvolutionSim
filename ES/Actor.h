@@ -12,7 +12,7 @@ public:
     Actor();
 
 	//constructor for generating a new actor
-    Actor(string id, float mutRate);
+    Actor(string id, double mutRate);
 
 	//constructor which reproduces one actor from another
     Actor(string id, Actor* a);
@@ -20,8 +20,8 @@ public:
 
     string getID();
     void setID(string id);
-	void setReward(float reward);
-	float getReward();
+    void setReward(double reward);
+    double getReward();
 
 	//updates the current value of the reward. Overridable
 	virtual void rewardUpdate();
@@ -33,10 +33,10 @@ public:
 
 	//returns true if second argument is larger than the first
     static bool compare(Actor* ac1, Actor* ac2);
-    float getMutationRate();
+    double getMutationRate();
 protected:
-	float Reward;
-    float MutationRate;
+    double Reward;
+    double MutationRate;
     string ID;
     void nameChange();
 };
